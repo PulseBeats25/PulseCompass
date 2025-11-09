@@ -1,0 +1,24 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from datetime import datetime
+
+app = FastAPI(title="PulseCompass API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+@app.get("/")
+async def root():
+    return {"message": "PulseCompass API is running"}
+
+@app.get("/health")
+async def health():
+    return {"status": "healthy", "timestamp": str(datetime.utcnow())}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("simple:app", host="0.0.0.0", port=8000, reload=True)

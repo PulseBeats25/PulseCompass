@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  * {
+    @apply border-neutral-200 dark:border-dark-border;
+  }
+  
+  html {
+    @apply antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-neutral-50 text-neutral-900 dark:bg-dark-bg dark:text-dark-text;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-100 dark:bg-dark-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 dark:bg-neutral-700 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400 dark:bg-neutral-600;
+  }
+}
+
+@layer components {
+  /* Card Components */
+  .card {
+    @apply bg-white dark:bg-dark-surface rounded-xl shadow-soft border border-neutral-200 dark:border-dark-border p-6 transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-medium hover:-translate-y-0.5 cursor-pointer;
+  }
+  
+  .card-compact {
+    @apply p-4;
+  }
+  
+  .card-glass {
+    @apply bg-white/80 dark:bg-dark-surface/80 backdrop-blur-sm;
+  }
+  
+  /* Button Components */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white shadow-sm hover:shadow focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-300 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-dark-text focus:ring-neutral-500;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-neutral-100 active:bg-neutral-200 text-neutral-700 dark:hover:bg-neutral-800 dark:text-neutral-300;
+  }
+  
+  .btn-danger {
+    @apply btn bg-danger-600 hover:bg-danger-700 active:bg-danger-800 text-white shadow-sm hover:shadow focus:ring-danger-500;
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+  
+  .btn-md {
+    @apply px-4 py-2 text-base;
+  }
+  
+  .btn-lg {
+    @apply px-6 py-3 text-lg;
+  }
+  
+  /* Traffic Light Indicators */
+  .traffic-light {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  
+  .traffic-light-good {
+    @apply traffic-light text-success-700 bg-success-100 dark:text-success-400 dark:bg-success-950;
+  }
+  
+  .traffic-light-neutral {
+    @apply traffic-light text-warning-700 bg-warning-100 dark:text-warning-400 dark:bg-warning-950;
+  }
+  
+  .traffic-light-bad {
+    @apply traffic-light text-danger-700 bg-danger-100 dark:text-danger-400 dark:bg-danger-950;
+  }
+  
+  /* Metric Cards */
+  .metric-card {
+    @apply card bg-gradient-to-br from-white to-neutral-50 dark:from-dark-surface dark:to-neutral-900;
+  }
+  
+  .metric-value {
+    @apply text-3xl font-bold text-neutral-900 dark:text-dark-text tabular-nums;
+  }
+  
+  .metric-label {
+    @apply text-sm font-medium text-neutral-600 dark:text-dark-text-secondary uppercase tracking-wide;
+  }
+  
+  .metric-change-positive {
+    @apply text-success-600 dark:text-success-400 font-semibold;
+  }
+  
+  .metric-change-negative {
+    @apply text-danger-600 dark:text-danger-400 font-semibold;
+  }
+  
+  /* Investor Cards */
+  .investor-card {
+    @apply card border-l-4 hover:shadow-medium;
+  }
+  
+  .investor-card-buffett {
+    @apply border-l-primary-600;
+  }
+  
+  .investor-card-graham {
+    @apply border-l-success-600;
+  }
+  
+  .investor-card-lynch {
+    @apply border-l-warning-600;
+  }
+  
+  .investor-card-munger {
+    @apply border-l-danger-600;
+  }
+  
+  /* Upload Zone */
+  .upload-zone {
+    @apply border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-xl p-8 text-center hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-950/20 transition-all duration-200 cursor-pointer;
+  }
+  
+  .upload-zone-active {
+    @apply border-primary-500 bg-primary-50 dark:bg-primary-950/20;
+  }
+  
+  /* Data Tables */
+  .table-container {
+    @apply overflow-x-auto rounded-lg border border-neutral-200 dark:border-dark-border;
+  }
+  
+  .table {
+    @apply w-full text-sm text-left;
+  }
+  
+  .table-header {
+    @apply bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-200 dark:border-dark-border;
+  }
+  
+  .table-header-cell {
+    @apply px-4 py-3 text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider;
+  }
+  
+  .table-row {
+    @apply border-b border-neutral-200 dark:border-dark-border hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors;
+  }
+  
+  .table-cell {
+    @apply px-4 py-3 text-neutral-900 dark:text-dark-text;
+  }
+  
+  /* Input Fields */
+  .input {
+    @apply w-full px-4 py-2 bg-white dark:bg-dark-surface border border-neutral-300 dark:border-dark-border rounded-lg text-neutral-900 dark:text-dark-text placeholder-neutral-400 dark:placeholder-neutral-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all;
+  }
+  
+  .input-error {
+    @apply border-danger-500 focus:ring-danger-500;
+  }
+  
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800 dark:bg-primary-950 dark:text-primary-400;
+  }
+  
+  .badge-success {
+    @apply bg-success-100 text-success-800 dark:bg-success-950 dark:text-success-400;
+  }
+  
+  .badge-warning {
+    @apply bg-warning-100 text-warning-800 dark:bg-warning-950 dark:text-warning-400;
+  }
+  
+  .badge-danger {
+    @apply bg-danger-100 text-danger-800 dark:bg-danger-950 dark:text-danger-400;
+  }
+  
+  /* Skeleton Loaders */
+  .skeleton {
+    @apply animate-pulse bg-neutral-200 dark:bg-neutral-800 rounded;
+  }
+  
+  .skeleton-text {
+    @apply skeleton h-4 w-full;
+  }
+  
+  .skeleton-circle {
+    @apply skeleton rounded-full;
+  }
+  
+  /* Tooltips */
+  .tooltip {
+    @apply absolute z-50 px-2 py-1 text-xs font-medium text-white bg-neutral-900 dark:bg-neutral-100 dark:text-neutral-900 rounded shadow-lg;
+  }
+  
+  /* Dividers */
+  .divider {
+    @apply border-t border-neutral-200 dark:border-dark-border;
+  }
+  
+  /* Focus States */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-dark-bg;
+  }
+}

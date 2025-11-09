@@ -1,0 +1,29 @@
+﻿# Node / Next.js
+node_modules/
+.next/
+.vercel/
+.turbo/
+.pnpm-store/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Env / secrets
+.env
+.env.*
+backend/.env
+backend/.env.*
+
+# Builds / data
+backend/data/performance_tracking/
+*.xlsx
+*.csv
+
+# OS junk
+.DS_Store
+Thumbs.db
