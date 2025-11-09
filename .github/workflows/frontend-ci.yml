@@ -1,4 +1,3 @@
-[![Frontend CI](https://github.com/PulseBeats25/PulseCompass/actions/workflows/frontend-ci.yml/badge.svg?branch=main)](https://github.com/PulseBeats25/PulseCompass/actions/workflows/frontend-ci.yml)
 name: Frontend CI
 on:
   push:
@@ -16,5 +15,9 @@ jobs:
           cache: 'npm'
       - name: Install
         run: npm ci
+      - name: Lint (best-effort)
+        run: npm run lint || true
+      - name: Test (best-effort)
+        run: npm test -- --ci --passWithNoTests || true
       - name: Build
         run: npm run build
