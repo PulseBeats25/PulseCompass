@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { 
   ArrowLeft, 
-  BarChart3, 
   TrendingUp, 
   AlertTriangle, 
   CheckCircle2, 
