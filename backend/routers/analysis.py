@@ -23,7 +23,6 @@ router = APIRouter(prefix="/company", tags=["analysis"])
 # Initialize services
 ollama_service = OllamaService()
 recommendation_engine = RecommendationEngine()
-db_client = SupabaseClient()
 
 
 def _generate_ratings_summary(traffic_lights: Dict[str, Dict[str, Dict[str, Any]]]) -> Dict[str, str]:
@@ -447,6 +446,7 @@ async def semantic_query(
         query_embedding = await ollama_service.generate_embedding(query)
         
         # Search similar transcripts
+        db_client = SupabaseClient()
         results = await db_client.semantic_search(
             query_embedding=query_embedding,
             company_id=company_id,

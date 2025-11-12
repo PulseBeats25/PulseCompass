@@ -6,9 +6,6 @@ from database.supabase_client import SupabaseClient
 
 router = APIRouter(prefix="/portfolio", tags=["portfolio"])
 
-# Initialize database client
-db_client = SupabaseClient()
-
 
 @router.get("")
 async def get_default_portfolio():
@@ -30,6 +27,7 @@ async def get_default_portfolio():
 async def get_portfolio(user_id: str):
     """Get user's portfolio"""
     try:
+        db_client = SupabaseClient()
         portfolio = await db_client.get_user_portfolio(user_id)
         return portfolio
     except Exception as e:
@@ -40,6 +38,7 @@ async def get_portfolio(user_id: str):
 async def get_watchlist(user_id: str):
     """Get user's watchlist"""
     try:
+        db_client = SupabaseClient()
         watchlist = await db_client.get_user_watchlist(user_id)
         return watchlist
     except Exception as e:
